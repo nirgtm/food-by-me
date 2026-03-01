@@ -61,9 +61,9 @@ try {
   
   console.log('✅ Routes loaded successfully');
   
-  // Start automatic order status updater
-  const { startAutoUpdater } = require('./routes/order-simulator');
-  startAutoUpdater();
+  // Start automatic order status updater (disabled due to Supabase connection issues)
+  // const { startAutoUpdater } = require('./routes/order-simulator');
+  // startAutoUpdater();
 } catch (error) {
   console.error('❌ Error loading routes:', error.message);
   console.error(error.stack);

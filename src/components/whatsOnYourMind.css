@@ -1,0 +1,387 @@
+/* -----------------------------------------
+   SECTION + HEADER
+----------------------------------------- */
+.mind-section {
+  position: relative;
+  margin: 34px 0;
+  padding: 6px 18px;
+  z-index: 10;
+  overflow: visible;
+}
+
+.whatsOnYourMind {
+  background: transparent !important;
+}
+
+.mind-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.mind-header h2 {
+  font-size: 32px;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+/* -----------------------------------------
+   SCROLL CONTAINER (Updated for seamless scroll)
+----------------------------------------- */
+.mind-container {
+  display: flex;
+  gap: 20px;
+  overflow-x: hidden;          /* must hide native scrollbar for continuous loop */
+  scroll-behavior: smooth;
+  padding: 12px 6px;
+  white-space: nowrap;
+  position: relative;
+}
+
+/* hide scrollbar (fallback) */
+.mind-container::-webkit-scrollbar {
+  display: none;
+}
+.mind-container {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+/* -----------------------------------------
+   ITEM STYLE
+----------------------------------------- */
+.mind-item {
+  min-width: 110px;
+  width: 110px;
+  flex: 0 0 auto;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+  outline: none;
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
+.mind-item:focus,
+.mind-item:hover {
+  transform: translateY(-3px);
+  transition: transform 0.18s ease;
+}
+
+.mind-item img {
+  width: 88px;
+  height: 88px;
+  object-fit: cover;
+  border-radius: 999px;
+  box-shadow: 0 8px 20px rgba(2, 6, 23, 0.06);
+  display: block;
+  margin: 0 auto 8px;
+}
+
+/* -----------------------------------------
+   ARROWS
+----------------------------------------- */
+.arrow {
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  padding: 8px 10px;
+  border-radius: 999px;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+  font-size: 16px;
+}
+
+.mind-arrows {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+/* -----------------------------------------
+   RESPONSIVE
+----------------------------------------- */
+@media (max-width: 520px) {
+  .mind-item {
+    min-width: 88px;
+    width: 88px;
+  }
+  .mind-item img {
+    width: 72px;
+    height: 72px;
+  }
+  .mind-header h2 {
+    font-size: 20px !important;
+  }
+}
+
+/* -----------------------------------------
+   LARGE TITLE OVERRIDES
+----------------------------------------- */
+.mind-header h2,
+.mind-section h2,
+.whatsOnYourMind h2,
+.whats-on-your-mind h2,
+section.mind-section > .mind-header h2 {
+  font-size: 32px !important;
+  font-weight: 800 !important;
+  line-height: 1.02 !important;
+  letter-spacing: -0.5px !important;
+  margin: 0 0 18px 0 !important;
+}
+
+@media (min-width: 1000px) {
+  .mind-header h2 {
+    font-size: 36px !important;
+  }
+}
+
+/* -----------------------------------------
+   EXTRA: smooth rendering + stable layout
+----------------------------------------- */
+.mind-container {
+  transform: translateZ(0);
+}
+.mind-item img {
+  width: 88px;
+  height: 88px;
+  object-fit: cover;
+}
+
+/* -----------------------------------------
+   PURE CSS INFINITE MARQUEE
+----------------------------------------- */
+
+.mind-container {
+  width: 100%;
+  overflow: hidden;
+  padding: 12px 0 24px;
+  position: relative;
+  min-height: 140px;
+
+  /* responsive variables */
+  --item-size: 88px;
+  --gap: 20px;
+  --marquee-speed: 25s;  /* lower = faster */
+}
+
+/* MARQUEE TRACK */
+.mind-container .marquee-track {
+  display: flex;
+  gap: var(--gap);
+  width: max-content;
+  animation: marquee-scroll var(--marquee-speed) linear infinite;
+  will-change: transform;
+}
+
+/* MARQUEE ITEMS */
+.mind-item {
+  flex: 0 0 auto;
+  text-align: center;
+  border: none;
+  background: none;
+  cursor: pointer;
+  width: auto;
+  min-width: calc(var(--item-size) + 22px);
+  padding: 0 4px;
+}
+
+.mind-item img {
+  width: var(--item-size);
+  height: var(--item-size);
+  object-fit: cover;
+  border-radius: 999px;
+  box-shadow: 0 8px 20px rgba(2, 6, 23, 0.06);
+  display: block;
+  margin: 0 auto 12px;
+}
+
+.mind-item p {
+  margin: 0;
+  font-size: 13px;
+  white-space: nowrap;
+  overflow: visible;
+  text-overflow: clip;
+  max-width: none;
+  line-height: 1.4;
+  font-weight: 500;
+}
+
+/* INFINITE ANIMATION */
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* -------------------------
+   RESPONSIVE TUNING
+------------------------- */
+
+@media (max-width: 500px) {
+  .mind-container {
+    --item-size: 70px;
+    --gap: 14px;
+    --marquee-speed: 15s;   /* faster on small screens */
+  }
+  .mind-item p {
+    font-size: 11px;
+  }
+  .mind-item {
+    min-width: calc(var(--item-size) + 16px);
+  }
+}
+
+@media (min-width: 501px) and (max-width: 900px) {
+  .mind-container {
+    --item-size: 78px;
+    --gap: 18px;
+    --marquee-speed: 20s;
+  }
+  .mind-item {
+    min-width: calc(var(--item-size) + 18px);
+  }
+}
+
+
+/* Pause on hover */
+.mind-container:hover .marquee-track {
+  animation-play-state: paused !important;
+}
+
+/* Pause when clicking / pressing */
+.mind-container:active .marquee-track {
+  animation-play-state: paused !important;
+}
+
+/* Pause when item receives keyboard focus (accessibility) */
+.mind-item:focus {
+  outline: none;
+}
+.mind-container:focus-within .marquee-track {
+  animation-play-state: paused !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mind-container .marquee-track {
+    animation: none !important;
+    transform: translateX(0) !important;
+  }
+}
+.mind-highlight {
+  background: inherit;            /* takes parent background */
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 800;
+}
+
+.mind-mixed {
+  font-family: 'Melodrama', serif !important;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+
+  /* increase size — you can adjust this */
+  font-size: 33px;
+
+  background: linear-gradient(
+    90deg,
+    rgba(255, 123, 107, 0.95),
+    rgba(255, 203, 142, 0.95),
+    rgba(145, 221, 255, 0.95)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.mind-mixed {
+  position: relative;
+}
+.mind-mixed::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: currentColor;
+}
+
+/* Final responsive hardening */
+@media (max-width: 768px) {
+  .mind-section {
+    margin: 26px 0;
+    padding: 6px 12px;
+  }
+
+  .mind-header h2,
+  .mind-section h2,
+  .whatsOnYourMind h2,
+  .whats-on-your-mind h2,
+  section.mind-section > .mind-header h2 {
+    font-size: clamp(1.15rem, 6vw, 1.7rem) !important;
+    margin-bottom: 12px !important;
+  }
+
+  .mind-container {
+    --item-size: 74px;
+    --gap: 14px;
+    --marquee-speed: 16s;
+    min-height: 120px;
+    padding: 10px 0 20px;
+  }
+
+  .mind-item {
+    width: auto;
+    min-width: calc(var(--item-size) + 16px);
+    padding: 0 4px;
+  }
+
+  .mind-item p {
+    font-size: 0.72rem;
+  }
+}
+
+@media (max-width: 520px) {
+  .mind-container {
+    --item-size: 64px;
+    --gap: 10px;
+    min-height: 110px;
+  }
+
+  .mind-item {
+    width: auto;
+    min-width: calc(var(--item-size) + 12px);
+    padding: 0 3px;
+  }
+
+  .mind-item p {
+    font-size: 0.68rem;
+  }
+}
+
+/* Mobile performance mode */
+@media (max-width: 768px) {
+  .mind-container {
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .mind-container .marquee-track {
+    animation: none !important;
+    transform: none !important;
+    will-change: auto;
+  }
+
+  .mind-item {
+    scroll-snap-align: start;
+  }
+
+  .mind-item:focus,
+  .mind-item:hover {
+    transform: none;
+  }
+}

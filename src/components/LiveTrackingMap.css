@@ -1,0 +1,229 @@
+/* ===========================
+   LIVE TRACKING MAP
+=========================== */
+
+.live-tracking-map {
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.tracking-map-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.tracking-map-header h3 {
+  margin: 0;
+  font-size: 1.3rem;
+  color: #111827;
+}
+
+.tracking-eta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+  font-weight: 700;
+}
+
+.eta-icon {
+  font-size: 1.2rem;
+}
+
+.eta-time {
+  font-size: 1.1rem;
+}
+
+/* Demo Map */
+.tracking-map-container {
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+  border-radius: 12px;
+  padding: 30px 20px;
+  margin-bottom: 20px;
+}
+
+.demo-map {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.map-route {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  padding: 20px 0;
+}
+
+.map-route::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: #e5e7eb;
+  transform: translateY(-50%);
+  z-index: 0;
+}
+
+.map-point {
+  position: relative;
+  z-index: 2;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: white;
+  border: 3px solid #e5e7eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.map-point.restaurant {
+  border-color: #3b82f6;
+  background: #dbeafe;
+}
+
+.map-point.destination {
+  border-color: #10b981;
+  background: #d1fae5;
+}
+
+.map-point.active {
+  border-color: #f59e0b;
+  background: #fef3c7;
+  box-shadow: 0 0 0 8px rgba(245, 158, 11, 0.2);
+  transform: scale(1.1);
+  transition: all 0.3s ease;
+}
+
+.map-point.passed {
+  border-color: #10b981;
+  background: #d1fae5;
+}
+}
+
+.map-progress-bar {
+  height: 8px;
+  background: #e5e7eb;
+  border-radius: 999px;
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+.map-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #3b82f6, #10b981);
+  border-radius: 999px;
+  transition: width 0.5s ease;
+}
+
+.tracking-status {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.status-text {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 6px;
+}
+
+.status-detail {
+  font-size: 0.95rem;
+  color: #6b7280;
+  margin: 0;
+}
+
+/* Tracking Info */
+.tracking-info {
+  background: #f9fafb;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.info-row:last-child {
+  border-bottom: none;
+}
+
+.info-label {
+  font-size: 0.9rem;
+  color: #6b7280;
+  font-weight: 600;
+}
+
+.info-value {
+  font-size: 0.95rem;
+  color: #111827;
+  font-weight: 700;
+}
+
+.tracking-demo-badge {
+  background: linear-gradient(135deg, #fef3c7, #fde68a);
+  border: 2px solid #f59e0b;
+  border-radius: 12px;
+  padding: 12px 16px;
+  font-size: 0.85rem;
+  color: #92400e;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.tracking-demo-badge strong {
+  color: #78350f;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .live-tracking-map {
+    padding: 16px;
+  }
+
+  .tracking-map-header h3 {
+    font-size: 1.1rem;
+  }
+
+  .tracking-eta {
+    padding: 6px 12px;
+  }
+
+  .eta-time {
+    font-size: 1rem;
+  }
+
+  .map-point {
+    width: 36px;
+    height: 36px;
+    font-size: 1.2rem;
+  }
+
+  .tracking-map-container {
+    padding: 20px 12px;
+  }
+
+  .info-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+}

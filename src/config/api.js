@@ -1,5 +1,5 @@
-// API Configuration - Updated for production deployment
-export const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:5001";
+// API Configuration - Production deployment v2
+export const API_BASE_URL = import.meta.env.VITE_API_URL || "https://food-by-me-backend-ob6b.vercel.app";
 
 export const API_ENDPOINTS = {
   HEALTH: `${API_BASE_URL}/api/health`,

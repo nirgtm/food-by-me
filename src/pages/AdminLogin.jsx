@@ -14,7 +14,7 @@ export default function AdminLogin() {
     e.preventDefault();
 
     // Simple admin credentials (in production, use proper authentication)
-    if (credentials.username === "majnu" && credentials.password === "majnu@2909") {
+    if (credentials.username === "niraj gautam" && credentials.password === "majnu@2909") {
       localStorage.setItem("adminToken", "admin-authenticated");
       localStorage.setItem("isAdmin", "true");
       notifyApp("Admin login successful", "success");
@@ -66,7 +66,7 @@ export default function AdminLogin() {
           </form>
 
           <div className="admin-login-footer">
-            <p>Default credentials: majnu / majnu@2909</p>
+            <p>Admin: niraj gautam</p>
             <button onClick={() => navigate("/")} className="admin-back-btn">
               ← Back to Home
             </button>
